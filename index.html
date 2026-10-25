@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="LEEWEAR After Dark — Halloween 2026. Dark luxury streetwear, timeless essentials and elevated comfort.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>LEEWEAR — After Dark | Halloween Edition</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/palace-script-mt" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/niagara-solid" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #080808;
+            --surface: #11100f;
+            --orange: #ff6b24;
+            --red: #7f1717;
+            --white: #f5f2ed;
+            --muted: #a7a19a;
+            --line: rgba(255,255,255,.12);
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--black);
+        }
+
+        body {
+            margin: 0;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        a { color: inherit; }
+
+        /* ANNOUNCEMENT */
+
+        .halloween-banner {
+            position: relative;
+            z-index: 20;
+            padding: 11px 15px;
+            background: var(--orange);
+            color: #080808;
+            text-align: center;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(8,8,8,.93) !important;
+            border-bottom: 1px solid rgba(255,107,36,.22);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-link {
+            transition: color .25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--orange) !important;
+        }
+
+        .cart-count {
+            background: var(--orange) !important;
+            color: #080808 !important;
+        }
+
+        .cart-btn:hover,
+        .mobile-menu-btn:hover {
+            color: var(--orange);
+        }
+
+        .mobile-menu {
+            background: #101010 !important;
+        }
+
+        .mobile-link:hover {
+            color: var(--orange);
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+            min-height: 85svh;
+            overflow: hidden;
+            background-color: #15110f;
+            background-image:
+                linear-gradient(90deg,
+                    rgba(0,0,0,.93) 0%,
+                    rgba(0,0,0,.70) 37%,
+                    rgba(0,0,0,.12) 100%),
+                linear-gradient(0deg, #080808 0%, transparent 28%),
+                url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2000&q=85");
+            background-size: cover;
+            background-position: center 35%;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 75% 45%,
+                    rgba(255,85,25,.17), transparent 42%),
+                linear-gradient(0deg, #080808, transparent 22%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            width: 100%;
+            max-width: 1450px;
+            margin: auto;
+            padding: 90px 8% 110px;
+            animation: heroEnter 1s ease both;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: var(--orange);
+        }
+
+        .hero h1 {
+            margin: 0;
+            color: #fff;
+            font-family: Impact, "Arial Narrow", sans-serif;
+            font-size: clamp(65px, 11vw, 150px);
+            font-weight: 900;
+            line-height: .82;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-top: 13px;
+            color: var(--orange);
+            font-family: "Niagara Solid", Impact, sans-serif;
+            font-size: 1.13em;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            max-width: 400px;
+            margin: 30px 0;
+            color: #d1cbc4;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 28px;
+            background: var(--orange) !important;
+            border: 1px solid var(--orange);
+            color: #080808 !important;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .btn-primary:hover {
+            background: transparent !important;
+            color: #fff !important;
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .hero-caption {
+            color: #ddd5cc;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-coordinates {
+            position: absolute;
+            right: 6%;
+            bottom: 48px;
+            color: rgba(255,255,255,.7);
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        /* MARQUEE */
+
+        .marquee {
+            overflow: hidden;
+            padding: 18px 0;
+            background: #0d0c0b;
+            border-top: 1px solid #29211b;
+            border-bottom: 1px solid #29211b;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeMove 32s linear infinite;
+        }
+
+        .marquee-track span {
+            padding: 0 30px;
+            color: #e2dcd4;
+            white-space: nowrap;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+        .marquee-track b {
+            padding-right: 18px;
+            color: var(--orange);
+        }
+
+        /* CATEGORIES */
+
+        .categories-section {
+            padding: 100px 7% !important;
+            background:
+                radial-gradient(ellipse at 50% 0%, #21130c, transparent 60%),
+                var(--black);
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .section-tag {
+            display: block;
+            margin-bottom: 16px;
+            color: var(--orange);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-top: 0;
+            color: var(--white) !important;
+            font-size: clamp(34px, 5vw, 62px);
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .section-subtitle {
+            max-width: 460px;
+            margin: 18px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .category-card {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            align-items: flex-end;
+            min-height: 400px;
+            padding: 24px;
+            overflow: hidden;
+            background-color: #181513;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition: border-color .35s, transform .35s;
+        }
+
+        .category-card:nth-child(1) {
+            background-image: url("https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=750&q=85");
+        }
+
+        .category-card:nth-child(2) {
+            background-image: url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=750&q=85");
+        }
+
+        .category-card:nth-child(3) {
+            background-image: url("https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=750&q=85");
+        }
+
+        .category-card:nth-child(4) {
+            background-image: url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=750&q=85");
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,.04) 0%,
+                rgba(0,0,0,.2) 40%,
+                rgba(0,0,0,.94) 100%
+            );
+            transition: background .35s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--orange);
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(255,107,36,.1),
+                rgba(0,0,0,.3) 35%,
+                rgba(0,0,0,.97)
+            );
+        }
+
+        .category-index {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--orange);
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        .category-name {
+            margin: 0;
+            color: #fff;
+            font-family: Impact, "Arial Narrow", sans-serif;
+            font-size: clamp(27px, 3vw, 43px);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* BRAND STORY */
+
+        .about-preview {
+            position: relative;
+            padding: 110px 8% !important;
+            background:
+                linear-gradient(90deg, rgba(0,0,0,.94), rgba(0,0,0,.66)),
+                url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85")
+                center 35% / cover;
+            border-top: 1px solid #2b211b;
+            border-bottom: 1px solid #2b211b;
+        }
+
+        .about-content {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content .section-title {
+            line-height: 1.08;
+        }
+
+        .about-text {
+            max-width: 520px;
+            margin: 25px auto 32px;
+            color: #c5beb6;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+            padding: 0 25px;
+            border: 1px solid #77716b;
+            color: #fff !important;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: .3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--orange) !important;
+            border-color: var(--orange);
+        }
+
+        /* CLOSING CAMPAIGN */
+
+        .after-dark {
+            position: relative;
+            padding: 95px 7%;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 50% 100%,
+                    rgba(120,28,10,.22), transparent 55%),
+                #0b0b0b;
+            text-align: center;
+        }
+
+        .after-dark h2 {
+            margin: 0;
+            color: #fff;
+            font-family: Impact, "Arial Narrow", sans-serif;
+            font-size: clamp(45px, 8vw, 100px);
+            line-height: .95;
+            text-transform: uppercase;
+        }
+
+        .after-dark h2 span {
+            color: var(--orange);
+        }
+
+        .after-dark p {
+            max-width: 480px;
+            margin: 23px auto 28px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .after-dark a {
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .after-dark a:hover {
+            color: #fff;
+        }
+
+        /* CART */
+
+        .cart-sidebar {
+            background: #101010 !important;
+            border-left: 1px solid rgba(255,107,36,.3);
+        }
+
+        .cart-title,
+        .total-price {
+            color: var(--orange) !important;
+        }
+
+        .btn-checkout {
+            background: var(--orange) !important;
+            color: #080808 !important;
+        }
+
+        .close-btn:hover {
+            color: var(--orange);
+        }
+
+        /* EMBERS */
+
+        .ember-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 15;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .ember {
+            position: absolute;
+            bottom: -10px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--orange);
+            box-shadow: 0 0 12px 3px rgba(255,107,36,.35);
+            opacity: 0;
+            animation: emberRise 11s linear infinite;
+        }
+
+        .ember:nth-child(1) { left: 9%; animation-delay: 0s; }
+        .ember:nth-child(2) { left: 26%; animation-delay: 4s; }
+        .ember:nth-child(3) { left: 43%; animation-delay: 7s; }
+        .ember:nth-child(4) { left: 65%; animation-delay: 2s; }
+        .ember:nth-child(5) { left: 84%; animation-delay: 5s; }
+        .ember:nth-child(6) { left: 96%; animation-delay: 8s; }
+
+        @keyframes emberRise {
+            0% { transform: translateY(0); opacity: 0; }
+            12% { opacity: .6; }
+            85% { opacity: .25; }
+            100% {
+                transform: translateY(-105vh) translateX(35px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes marqueeMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes heroEnter {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 950px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .category-card { min-height: 360px; }
+
+            .hero {
+                background-position: 60% center;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .halloween-banner {
+                font-size: 8px;
+                letter-spacing: 1.5px;
+            }
+
+            .hero {
+                min-height: 76vh;
+                min-height: 76svh;
+                align-items: flex-end;
+                background-image:
+                    linear-gradient(0deg, #080808 0%, rgba(0,0,0,.75) 42%, rgba(0,0,0,.08) 100%),
+                    url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85");
+                background-position: 58% center;
+            }
+
+            .hero-content {
+                padding: 55px 7% 72px;
+            }
+
+            .hero h1 {
+                font-size: clamp(59px, 15vw, 90px);
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                max-width: 320px;
+                font-size: 12px;
+            }
+
+            .hero-buttons {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-coordinates { display: none; }
+
+            .categories-section {
+                padding: 70px 5% !important;
+            }
+
+            .categories-grid { gap: 10px; }
+
+            .category-card {
+                min-height: 260px;
+                padding: 15px;
+            }
+
+            .category-name { font-size: 27px; }
+
+            .about-preview {
+                padding: 80px 7% !important;
+            }
+
+            .after-dark { padding: 70px 5%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HALLOWEEN ANNOUNCEMENT -->
+    <div class="halloween-banner">
+        LEEWEAR AFTER DARK &nbsp; / &nbsp; HALLOWEEN EDITION 2026
+    </div>
+
+    <!-- AMBIENT EMBERS -->
+    <div class="ember-layer" aria-hidden="true">
+        <span class="ember"></span>
+        <span class="ember"></span>
+        <span class="ember"></span>
+        <span class="ember"></span>
+        <span class="ember"></span>
+        <span class="ember"></span>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="LEEWEAR logo" class="logo-img">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="cart-btn" onclick="toggleCart()" aria-label="Open shopping cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+
+                <button class="mobile-menu-btn"
+                        onclick="toggleMobileMenu()"
+                        aria-label="Toggle mobile menu">
+                    <svg id="menu-icon" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="shop.html" class="mobile-link">Shop</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO CAMPAIGN -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">The Halloween Collection</div>
+
+            <h1>
+                DRESS
+                <span>After Dark.</span>
+            </h1>
+
+            <p class="hero-description">
+                The night has a dress code. Discover dark essentials,
+                elevated silhouettes and timeless streetwear.
+                Ordinary ends after sunset.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn-primary">
+                    Explore Collection &nbsp; ↗
+                </a>
+                <span class="hero-caption">
+                    Dark by design. LeeWear by nature.
+                </span>
+            </div>
+        </div>
+
+        <div class="hero-coordinates">LW / 026 — AFTER DARK</div>
+    </section>
+
+    <!-- MOVING CAMPAIGN STRIP -->
+    <div class="marquee" aria-label="LeeWear Halloween collection">
+        <div class="marquee-track" aria-hidden="true">
+            <span><b>✦</b> LEEWEAR AFTER DARK</span>
+            <span><b>✦</b> BUILT FOR THE NIGHT</span>
+            <span><b>✦</b> DARK LUXURY</span>
+            <span><b>✦</b> HALLOWEEN 2026</span>
+            <span><b>✦</b> LEEWEAR AFTER DARK</span>
+            <span><b>✦</b> BUILT FOR THE NIGHT</span>
+            <span><b>✦</b> DARK LUXURY</span>
+            <span><b>✦</b> HALLOWEEN 2026</span>
+        </div>
+    </div>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="categories-section">
+        <div class="section-heading">
+            <span class="section-tag">01 / Find Your Uniform</span>
+            <h2 class="section-title">The Dark Edit.</h2>
+            <p class="section-subtitle">
+                Four essentials. One attitude. Pieces that belong
+                in your wardrobe long after Halloween.
+            </p>
+        </div>
+
+        <div class="categories-grid">
+            <a href="shop.html?category=Hoodies" class="category-card">
+                <div class="category-overlay"></div>
+                <div>
+                    <span class="category-index">LW / 001</span>
+                    <h3 class="category-name">Hoodies</h3>
+                </div>
+            </a>
+
+            <a href="shop.html?category=T-Shirts" class="category-card">
+                <div class="category-overlay"></div>
+                <div>
+                    <span class="category-index">LW / 002</span>
+                    <h3 class="category-name">T-Shirts</h3>
+                </div>
+            </a>
+
+            <a href="shop.html?category=Shirts" class="category-card">
+                <div class="category-overlay"></div>
+                <div>
+                    <span class="category-index">LW / 003</span>
+                    <h3 class="category-name">Shirts</h3>
+                </div>
+            </a>
+
+            <a href="shop.html?category=Pants" class="category-card">
+                <div class="category-overlay"></div>
+                <div>
+                    <span class="category-index">LW / 004</span>
+                    <h3 class="category-name">Pants</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BRAND STORY -->
+    <section class="about-preview">
+        <div class="about-content">
+            <span class="section-tag">02 / The LeeWear Standard</span>
+
+            <h2 class="section-title">
+                Quality You Can Feel.<br>
+                Presence You Can't Ignore.
+            </h2>
+
+            <p class="about-text">
+                At LEEWEAR, we believe style should outlive the season.
+                Every piece combines everyday comfort with considered
+                design, creating a wardrobe that remains relevant
+                long after October 31st.
+            </p>
+
+            <a href="about.html" class="btn-secondary">
+                Discover LeeWear &nbsp; ↗
+            </a>
+        </div>
+    </section>
+
+    <!-- CLOSING CAMPAIGN -->
+    <section class="after-dark">
+        <span class="section-tag">03 / When The Sun Goes Down</span>
+
+        <h2>
+            Not A Costume.<br>
+            <span>A State Of Mind.</span>
+        </h2>
+
+        <p>
+            Halloween is one night. Your style is forever.
+            Enter the LeeWear universe and find your next signature piece.
+        </p>
+
+        <a href="shop.html">Shop LeeWear &nbsp; ↗</a>
+    </section>
+
+    <!-- SHOPPING CART -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Shopping Cart</h2>
+
+            <button class="close-btn"
+                    onclick="toggleCart()"
+                    aria-label="Close shopping cart">
+                <svg width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price" id="total-price">KSH 0</span>
+            </div>
+
+            <button class="btn-checkout" onclick="checkout()">
+                Proceed to Order
+            </button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
